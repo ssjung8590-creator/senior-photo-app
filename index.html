@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>시니어 사진 자동 분류기</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app-container">
+    <header>
+      <h1>사진 자동 분류기</h1>
+      <p class="subtitle">사진을 올리면 알아서 정리해 드립니다.</p>
+    </header>
+
+    <main>
+      <section class="upload-section" id="uploadSection">
+        <label for="photoUpload" class="upload-button">
+          <span class="icon">📸</span>
+          <span class="text">여기를 눌러 사진 선택하기</span>
+          <input type="file" id="photoUpload" accept="image/*" multiple style="display: none;">
+        </label>
+        <p class="helper-text">여러 장을 한 번에 선택할 수 있어요.</p>
+      </section>
+
+      <section class="loading-section" id="loadingSection" style="display: none;">
+        <div class="spinner"></div>
+        <h2>사진을 분류하고 있습니다...</h2>
+        <p>잠시만 기다려 주세요.</p>
+      </section>
+
+      <section class="gallery-section" id="gallerySection">
+        <div class="tabs" id="categoryTabs">
+          <button class="tab-button active" data-category="all">✨ 전체보기</button>
+          <button class="tab-button" data-category="family">👨‍👩‍👧‍👦 가족</button>
+          <button class="tab-button" data-category="landscape">⛰️ 풍경</button>
+          <button class="tab-button" data-category="flower">🌸 꽃</button>
+          <button class="tab-button" data-category="travel">✈️ 여행</button>
+        </div>
+
+        <div class="photo-grid" id="photoGrid">
+          <!-- Photos will be dynamically added here -->
+        </div>
+      </section>
+    </main>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
