@@ -35,27 +35,26 @@ photoUpload.addEventListener('change', async (e) => {
     await new Promise(resolve => setTimeout(resolve, 1500));
     
     // Read file as data URL to display it
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      // Simulate Gemini API classification by randomly picking a category
-      // In a real app, we would send the base64 image to Google AI Studio here
-      const randomCategory = categories[Math.floor(Math.random() * categories.length)];
-      
-      photosData.push({
-        url: e.target.result,
-        category: randomCategory.id,
-        categoryLabel: randomCategory.label
-      });
-      
-      // If this is the last file, render the gallery
-      if (i === files.length - 1) {
-        const activeTab = document.querySelector('.tab-button.active').getAttribute('data-category');
-        renderGallery(activeTab);
-        loadingSection.style.display = 'none';
-      }
-    };
-    reader.readAsDataURL(file);
+    await new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const randomCategory = categories[Math.floor(Math.random() * categories.length)];
+        photosData.push({
+          url: e.target.result,
+          category: randomCategory.id,
+          categoryLabel: randomCategory.label
+        });
+        resolve();
+      };
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
   }
+  
+  // Render gallery after all files are processed
+  const activeTab = document.querySelector('.tab-button.active').getAttribute('data-category');
+  renderGallery(activeTab);
+  loadingSection.style.display = 'none';
   
   // Reset input
   photoUpload.value = '';
