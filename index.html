@@ -16,10 +16,10 @@
 
     <main>
       <section class="upload-section" id="uploadSection">
-        <label for="photoUpload" class="upload-button">
+        <label for="photoUpload" class="upload-button" style="position: relative; overflow: hidden;">
           <span class="icon">📸</span>
           <span class="text">여기를 눌러 사진 선택하기</span>
-          <input type="file" id="photoUpload" accept="image/jpeg, image/png, image/heic, image/webp, image/*" multiple style="display: none;">
+          <input type="file" id="photoUpload" accept="image/jpeg, image/png, image/heic, image/webp, image/*" multiple style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; z-index: 10; display: block;">
         </label>
         <p class="helper-text">여러 장을 한 번에 선택할 수 있어요.</p>
       </section>
