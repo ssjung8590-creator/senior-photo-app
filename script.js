@@ -97,7 +97,5 @@ categoryTabs.addEventListener('click', (e) => {
   }
 });
 
-});
-
 // Render the default gallery on load
 renderGallery('all');
